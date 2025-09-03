@@ -1,0 +1,17 @@
+services:
+  chroma:
+    image: chromadb/chroma:latest
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/data
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/data
+      - ANONYMIZED_TELEMETRY=TRUE
+    command: chroma run --host 0.0.0.0 --port ${PORT:-8000} --path ${PERSIST_DIRECTORY:-/data}
+
+volumes:
+  chroma_data:
+    driver: local

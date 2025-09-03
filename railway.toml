@@ -1,0 +1,11 @@
+[build]
+builder = "dockerfile"
+
+[deploy]
+restartPolicyType = "on_failure"
+
+[variables]
+PORT = "8000"
+IS_PERSISTENT = "TRUE"
+PERSIST_DIRECTORY = "/data"
+ANONYMIZED_TELEMETRY = "TRUE"
